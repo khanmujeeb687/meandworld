@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
 
   init() async{
-    bool isLoggedIn = !!(await StorageUtil.getLoggedInUser());
+    bool isLoggedIn = (await StorageUtil.getLoggedInUser())!=null;
     if(isLoggedIn){
       NavigationUtil.navigateTo(context, HomeScreen(),replace: true);
     }else{
