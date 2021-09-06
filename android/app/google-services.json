@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "498037519682",
+    "project_id": "meandworld-61c8e",
+    "storage_bucket": "meandworld-61c8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498037519682:android:adcefbcdf8914ca748c4db",
+        "android_client_info": {
+          "package_name": "com.mintech.meandworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498037519682-51uu84585ghq40pbk463vbvo01471lgm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mintech.meandworld",
+            "certificate_hash": "84ff69ffd2d42e1a10d7fa591c60c0bffd56b6c0"
+          }
+        },
+        {
+          "client_id": "498037519682-omrdm7tjlmk7rgibootbecion5r773r5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDj3eu5tSZekWsstKx2ApsOqI3wO8UB-_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498037519682-omrdm7tjlmk7rgibootbecion5r773r5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
