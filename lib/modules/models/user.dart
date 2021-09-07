@@ -79,4 +79,25 @@ class User {
     }
     return s.substring(1);
   }
+
+  toJson(){
+    Map<String, dynamic> data ={};
+    data['name'] = this.name;
+    data['username'] = this.username;
+    data['profileUrl'] = this.profileUrl;
+    data['id'] = this.id;
+    data['websites'] = getWebsites();
+    data['hiddenProfile'] = this.hiddenProfile;
+    data['interests'] = interests;
+    data['languages'] = this.languages;
+    data['profession'] = this.profession;
+    data['bio'] = this.bio;
+    data['country'] = this.country;
+    data['connections'] = this.connections;
+    data['privateKey'] = this.privateKey;
+    data['publicKey'] = this.publicKey;
+    data['email'] = this.email;
+    data['googleId'] = this.googleId;
+    return data;
+  }
 }
