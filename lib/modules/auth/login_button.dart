@@ -4,6 +4,8 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:meandworld/modules/auth/auth_service.dart';
 import 'package:meandworld/modules/home/home_screen.dart';
 import 'package:meandworld/modules/navigation/navigation_util.dart';
+import 'package:meandworld/modules/providers/chat_provider.dart';
+import 'package:provider/provider.dart';
 
 
 class LoginButton extends StatefulWidget {
@@ -28,6 +30,7 @@ class _LoginButtonState extends State<LoginButton> {
   onPress() async{
     var resp = await authService.signInWithGoogle();
     if(resp!=null){
+      Provider.of<ChatsProvider>(context,listen: false).init(context);
       NavigationUtil.navigateTo(context, HomeScreen(),replace: true);
     }
   }

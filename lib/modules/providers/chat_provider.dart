@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:meandworld/modules/localstorage/storage_util.dart';
 import 'package:meandworld/modules/models/chat.dart';
 import 'package:meandworld/modules/models/user.dart';
 import 'package:meandworld/values/collection_name.dart';
@@ -21,16 +22,17 @@ class ChatsProvider with ChangeNotifier {
 
   init(BuildContext context) async{
     this.context=context;
+    currentUser= await StorageUtil.getUser();
     await Firebase.initializeApp();
     fetchChats();
   }
 
   void fetchChats() async{
-    assert(currentUser!=null);
+    if(currentUser==null) return;
     QuerySnapshot? snapshot;
 
     if(lastChat==null){
-      snapshot =await FirebaseFirestore.instance.collection(Collections.CHAT).where('users',whereIn: [currentUser!.id]).limit(Collections.CHATS_PER_PAGE).get();
+      snapshot =await FirebaseFirestore.instance.collection(Collections.CHAT).where('users',whereIn: [currentUser!.id]).limit(Collections.CHATS_PER_PAGE).orderBy('lastModifiedAt',descending: true).get();
     }else{
       snapshot =await FirebaseFirestore.instance.collection(Collections.CHAT)
           .where('users',whereIn: [currentUser!.id]).startAfterDocument(lastChat!).limit(Collections.CHATS_PER_PAGE).get();

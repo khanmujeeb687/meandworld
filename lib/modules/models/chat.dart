@@ -5,8 +5,9 @@ class Chat{
   String? id;
   List<User>? users;
   int? createdAt;
+  int? lastModifiedAt;
 
-  Chat({this.id, this.users, this.createdAt});
+  Chat({this.id, this.users, this.createdAt,this.lastModifiedAt});
 
   static listFromJSON(List<QueryDocumentSnapshot> data){
     List<Chat> chats=[];

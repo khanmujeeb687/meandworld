@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meandworld/modules/world/world_screen.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -25,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
           body: TabBarView(
             children: [
               Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
+              WorldScreen(),
             ],
           ),
         ),
