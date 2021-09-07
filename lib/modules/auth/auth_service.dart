@@ -9,10 +9,6 @@ import 'package:meandworld/values/shared_preference_keys.dart';
 class AuthService {
   GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  AuthService(){
-     Firebase.initializeApp();
-  }
-
 
   signInWithGoogle() async {
       print(await StorageUtil.getUser());
@@ -34,7 +30,8 @@ class AuthService {
   saveUser(User user) async{
     bool alreadyPresent = await haveUserByGoogleId(user);
     if(!alreadyPresent){
-      await FirebaseFirestore.instance.collection(Collections.USER).add(user.toJson());
+      DocumentReference ref =await FirebaseFirestore.instance.collection(Collections.USER).add(user.toJson());
+      ref.update({'id': ref.id});
     }
     return user;
   }
