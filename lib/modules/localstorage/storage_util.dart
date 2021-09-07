@@ -16,6 +16,11 @@ class StorageUtil {
     return Future.value(sharedPreferences);
   }
 
+  static clear() async{
+    SharedPreferences preferences = await getInstance();
+    preferences.clear();
+  }
+
 
 
   static getLoggedInUser() async {
@@ -33,6 +38,30 @@ class StorageUtil {
       return json.decode(resp);
     }
     return null;
+  }
+
+
+  static saveString(String key, String value) async{
+    SharedPreferences pref= await getInstance();
+    pref.setString(key, value);
+  }
+
+
+  static getString(String key) async{
+    SharedPreferences pref= await getInstance();
+    return pref.getString(key);
+  }
+
+
+  static saveUser( String value) async{
+    saveString(SharedPreferenceKeys.USER, value);
+  }
+
+  static getUser() async{
+    var resp =  await getString(SharedPreferenceKeys.USER);
+    if(resp==null) return null;
+    var s =json.decode(resp);
+    return User.fromJson(s);
   }
 
 }
